@@ -1,0 +1,763 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B4223A0-A2A7-4A6C-825D-228FF75E1A19}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yacht</RootNamespace>
+    <AssemblyName>Yacht</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44339</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Konscious.Security.Cryptography.Argon2, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Konscious.Security.Cryptography.Argon2.1.3.0\lib\net46\Konscious.Security.Cryptography.Argon2.dll</HintPath>
+    </Reference>
+    <Reference Include="Konscious.Security.Cryptography.Blake2, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Konscious.Security.Cryptography.Blake2.1.1.0\lib\net46\Konscious.Security.Cryptography.Blake2.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=4.2.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.4.2.0\lib\net47\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=4.2.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.4.2.0\lib\net47\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Recaptcha.Web, Version=3.1.0.0, Culture=neutral, PublicKeyToken=c11b6c0ad947566e, processorArchitecture=MSIL">
+      <HintPath>..\packages\RecaptchaNet.3.1.0\lib\net45\Recaptcha.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Formats.Asn1, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.7.0.0\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="backStage\assets\css\corporate-ui-dashboard.css" />
+    <Content Include="backStage\assets\css\corporate-ui-dashboard.min.css" />
+    <Content Include="backStage\assets\css\nucleo-icons.css" />
+    <Content Include="backStage\assets\css\nucleo-svg.css" />
+    <Content Include="backStage\assets\fonts\nucleo-icons.svg" />
+    <Content Include="backStage\assets\img\3d-cube.png" />
+    <Content Include="backStage\assets\img\apple-icon.png" />
+    <Content Include="backStage\assets\img\bg1.jpg" />
+    <Content Include="backStage\assets\img\bruce-mars.jpg" />
+    <Content Include="backStage\assets\img\corporate-ui-logo.svg" />
+    <Content Include="backStage\assets\img\curved-images\img-6.jpg" />
+    <Content Include="backStage\assets\img\curved-images\img-7.jpg" />
+    <Content Include="backStage\assets\img\down-arrow-dark.svg" />
+    <Content Include="backStage\assets\img\down-arrow-white.svg" />
+    <Content Include="backStage\assets\img\down-arrow.svg" />
+    <Content Include="backStage\assets\img\favicon.png" />
+    <Content Include="backStage\assets\img\header-blue-purple.jpg" />
+    <Content Include="backStage\assets\img\header-orange-purple.jpg" />
+    <Content Include="backStage\assets\img\image-sign-in.jpg" />
+    <Content Include="backStage\assets\img\image-sign-up.jpg" />
+    <Content Include="backStage\assets\img\img-1.jpg" />
+    <Content Include="backStage\assets\img\img-2.jpg" />
+    <Content Include="backStage\assets\img\img-3.jpg" />
+    <Content Include="backStage\assets\img\img-4.jpg" />
+    <Content Include="backStage\assets\img\img-5.jpg" />
+    <Content Include="backStage\assets\img\img-8.jpg" />
+    <Content Include="backStage\assets\img\img-9.jpg" />
+    <Content Include="backStage\assets\img\logo-ct-dark.png" />
+    <Content Include="backStage\assets\img\logo-ct.png" />
+    <Content Include="backStage\assets\img\logos\facebook-logo.svg" />
+    <Content Include="backStage\assets\img\logos\google-logo.svg" />
+    <Content Include="backStage\assets\img\logos\mastercard-white.png" />
+    <Content Include="backStage\assets\img\logos\mastercard.png" />
+    <Content Include="backStage\assets\img\logos\visa-white.png" />
+    <Content Include="backStage\assets\img\logos\visa.png" />
+    <Content Include="backStage\assets\img\logos\wifi-white.png" />
+    <Content Include="backStage\assets\img\marie.jpg" />
+    <Content Include="backStage\assets\img\small-logos\icon-sun-cloud.png" />
+    <Content Include="backStage\assets\img\small-logos\logo-atlassian.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-google.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-invision.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-jira.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-slack.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-spotify.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-webdev.svg" />
+    <Content Include="backStage\assets\img\small-logos\logo-xd.svg" />
+    <Content Include="backStage\assets\img\team-1.jpg" />
+    <Content Include="backStage\assets\img\team-2.jpg" />
+    <Content Include="backStage\assets\img\team-3.jpg" />
+    <Content Include="backStage\assets\img\team-4.jpg" />
+    <Content Include="backStage\assets\img\team-5.jpg" />
+    <Content Include="backStage\assets\img\team-6.jpg" />
+    <Content Include="backStage\assets\img\theme\angular.jpg" />
+    <Content Include="backStage\assets\img\theme\bootstrap.jpg" />
+    <Content Include="backStage\assets\img\theme\dribbble.png" />
+    <Content Include="backStage\assets\img\theme\dropbox.png" />
+    <Content Include="backStage\assets\img\theme\mastercard.png" />
+    <Content Include="backStage\assets\img\theme\paypal.png" />
+    <Content Include="backStage\assets\img\theme\react.jpg" />
+    <Content Include="backStage\assets\img\theme\sketch.jpg" />
+    <Content Include="backStage\assets\img\theme\slack.png" />
+    <Content Include="backStage\assets\img\theme\spotify.jpeg" />
+    <Content Include="backStage\assets\img\theme\tim.png" />
+    <Content Include="backStage\assets\img\theme\unass.jpg" />
+    <Content Include="backStage\assets\img\theme\visa.png" />
+    <Content Include="backStage\assets\img\theme\vue.jpg" />
+    <Content Include="backStage\assets\js\core\bootstrap.bundle.min.js" />
+    <Content Include="backStage\assets\js\core\bootstrap.min.js" />
+    <Content Include="backStage\assets\js\core\popper.min.js" />
+    <Content Include="backStage\assets\js\corporate-ui-dashboard.js" />
+    <Content Include="backStage\assets\js\corporate-ui-dashboard.min.js" />
+    <Content Include="backStage\assets\js\plugins\bootstrap-notify.js" />
+    <Content Include="backStage\assets\js\plugins\Chart.extension.js" />
+    <Content Include="backStage\assets\js\plugins\chartjs.min.js" />
+    <Content Include="backStage\assets\js\plugins\perfect-scrollbar.min.js" />
+    <Content Include="backStage\assets\js\plugins\smooth-scrollbar.min.js" />
+    <Content Include="backStage\assets\js\plugins\swiper-bundle.min.js" />
+    <Content Include="backStage\CompanyEdit.aspx" />
+    <Content Include="backStage\DealersArea.aspx" />
+    <Content Include="backStage\DealersEdit.aspx" />
+    <Content Include="backStage\Navigate.aspx" />
+    <Content Include="backStage\SignIn.aspx" />
+    <Content Include="backStage\UserBoard.aspx" />
+    <Content Include="company.aspx" />
+    <Content Include="contact.aspx" />
+    <Content Include="css\csshover.htc" />
+    <Content Include="css\homestyle.css" />
+    <Content Include="css\iepngfix.htc" />
+    <Content Include="css\jquery.ad-gallery.css" />
+    <Content Include="css\js.css" />
+    <Content Include="css\reset.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\custom.css" />
+    <Content Include="dealers.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\ad_next.png" />
+    <Content Include="images\ad_prev.png" />
+    <Content Include="images\ad_scroll_back.png" />
+    <Content Include="images\ad_scroll_forward.png" />
+    <Content Include="images\back.gif" />
+    <Content Include="images\banner001.jpg" />
+    <Content Include="images\banner001b.jpg" />
+    <Content Include="images\banner002.jpg" />
+    <Content Include="images\banner002b.jpg" />
+    <Content Include="images\banner003.jpg" />
+    <Content Include="images\banner003b.jpg" />
+    <Content Include="images\banner004.jpg" />
+    <Content Include="images\banner004b.jpg" />
+    <Content Include="images\banner005.jpg" />
+    <Content Include="images\banner005b.jpg" />
+    <Content Include="images\banner006.jpg" />
+    <Content Include="images\banner006b.jpg" />
+    <Content Include="images\banner00_masks.png" />
+    <Content Include="images\banner01_masks.png" />
+    <Content Include="images\banner02_masks.png" />
+    <Content Include="images\banner_masks.png" />
+    <Content Include="images\banner_masks.png" />
+    <Content Include="images\bg1.jpg" />
+    <Content Include="images\bgbg.jpg" />
+    <Content Include="images\bot.jpg" />
+    <Content Include="images\bot1.jpg" />
+    <Content Include="images\buttbg.gif" />
+    <Content Include="images\buttleft.gif" />
+    <Content Include="images\buttom01.gif" />
+    <Content Include="images\buttom02.gif" />
+    <Content Include="images\buttom03.gif" />
+    <Content Include="images\buttright.gif" />
+    <Content Include="images\changbg.gif" />
+    <Content Include="images\changbg.png" />
+    <Content Include="images\changbg1.gif" />
+    <Content Include="images\changbg1.png" />
+    <Content Include="images\company.jpg" />
+    <Content Include="images\contact.jpg" />
+    <Content Include="images\con_bg.gif" />
+    <Content Include="images\DEALERS.jpg" />
+    <Content Include="images\dealers001.jpg" />
+    <Content Include="images\dealers002.jpg" />
+    <Content Include="images\dealers003.jpg" />
+    <Content Include="images\dealers004.jpg" />
+    <Content Include="images\deckplan01.jpg" />
+    <Content Include="images\default1.jpg" />
+    <Content Include="images\default2.jpg" />
+    <Content Include="images\downloads.gif" />
+    <Content Include="images\footer.jpg" />
+    <Content Include="images\i001.jpg" />
+    <Content Include="images\i001.jpg" />
+    <Content Include="images\i002.jpg" />
+    <Content Include="images\i003.jpg" />
+    <Content Include="images\i004.jpg" />
+    <Content Include="images\i005.jpg" />
+    <Content Include="images\i005.jpg" />
+    <Content Include="images\i006.jpg" />
+    <Content Include="images\icon001.gif" />
+    <Content Include="images\icon002.gif" />
+    <Content Include="images\icon003.gif" />
+    <Content Include="images\icon004.gif" />
+    <Content Include="images\icon005.gif" />
+    <Content Include="images\icon006.gif" />
+    <Content Include="images\icon007.gif" />
+    <Content Include="images\icon008.gif" />
+    <Content Include="images\lefttop.gif" />
+    <Content Include="images\loader.gif" />
+    <Content Include="images\mainbg.gif" />
+    <Content Include="images\menu.gif" />
+    <Content Include="images\menu.jpg" />
+    <Content Include="images\menu1.jpg" />
+    <Content Include="images\menu1_03.gif" />
+    <Content Include="images\menu1_04.gif" />
+    <Content Include="images\menu1_05.gif" />
+    <Content Include="images\menu1_06.gif" />
+    <Content Include="images\menu1_07.gif" />
+    <Content Include="images\menu2_03.gif" />
+    <Content Include="images\menu2_04.gif" />
+    <Content Include="images\menu2_05.gif" />
+    <Content Include="images\menu2_06.gif" />
+    <Content Include="images\menu2_07.gif" />
+    <Content Include="images\menu_y1_03.jpg" />
+    <Content Include="images\menu_y1_04.jpg" />
+    <Content Include="images\menu_y1_05.jpg" />
+    <Content Include="images\menu_y1_06.jpg" />
+    <Content Include="images\menu_y2_03.jpg" />
+    <Content Include="images\menu_y2_04.jpg" />
+    <Content Include="images\menu_y2_05.jpg" />
+    <Content Include="images\menu_y2_06.jpg" />
+    <Content Include="images\mmmmeeeee.gif" />
+    <Content Include="images\navline.gif" />
+    <Content Include="images\nav_hover_bg.gif" />
+    <Content Include="images\new01.png" />
+    <Content Include="images\newbanner.jpg" />
+    <Content Include="images\news.gif" />
+    <Content Include="images\news_list.jpg" />
+    <Content Include="images\news_show.jpg" />
+    <Content Include="images\new_top01.png" />
+    <Content Include="images\opa75.png" />
+    <Content Include="images\pit001.jpg" />
+    <Content Include="images\pit002.jpg" />
+    <Content Include="images\pit003.jpg" />
+    <Content Include="images\pit004.jpg" />
+    <Content Include="images\pit006.jpg" />
+    <Content Include="images\pit007.jpg" />
+    <Content Include="images\pit008.jpg" />
+    <Content Include="images\pit009.jpg" />
+    <Content Include="images\pit010.jpg" />
+    <Content Include="images\rnav_line.gif" />
+    <Content Include="images\sub_bg.gif" />
+    <Content Include="images\test002.jpg" />
+    <Content Include="images\test1.jpg" />
+    <Content Include="images\tog.jpg" />
+    <Content Include="images\top.gif" />
+    <Content Include="images\TOP.jpg" />
+    <Content Include="images\TOP1.jpg" />
+    <Content Include="images\TOP2.jpg" />
+    <Content Include="images\TOP3.jpg" />
+    <Content Include="images\TOP4.jpg" />
+    <Content Include="images\TOP5.jpg" />
+    <Content Include="images\topa1.jpg" />
+    <Content Include="images\topa2.jpg" />
+    <Content Include="images\topa3.jpg" />
+    <Content Include="images\transparent.gif" />
+    <Content Include="images\transparent.gif" />
+    <Content Include="images\ya01.jpg" />
+    <Content Include="images\yachts.jpg" />
+    <Content Include="images\yachts_1.jpg" />
+    <Content Include="images\yachts_2.jpg" />
+    <Content Include="index.aspx" />
+    <Content Include="javascript\iepngfix_tilebg.js" />
+    <Content Include="javascript\pngfix.js" />
+    <Content Include="news.aspx" />
+    <Content Include="RecaptchaNet.Readme.txt" />
+    <Content Include="Scripts\AC_RunActiveContent.js" />
+    <Content Include="Scripts\jquery-1.6.1.min.js" />
+    <Content Include="Scripts\jquery.ad-gallery.js" />
+    <Content Include="Scripts\jquery.cycle.all.2.74.js" />
+    <Content Include="Scripts\jquery.cycle.all.latest.js" />
+    <Content Include="Scripts\jquery.event.hover-1.0.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.timers.js" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="yachts.aspx" />
+    <Content Include="yachts_2.aspx" />
+    <Content Include="yachts_3.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="backStage\Argon2Verify.cs" />
+    <Compile Include="backStage\CheckAccount.ashx.cs">
+      <DependentUpon>CheckAccount.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\CompanyEdit.aspx.cs">
+      <DependentUpon>CompanyEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\CompanyEdit.aspx.designer.cs">
+      <DependentUpon>CompanyEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\DashBoard.Master.cs">
+      <DependentUpon>DashBoard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\DashBoard.Master.designer.cs">
+      <DependentUpon>DashBoard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\DBHelper.cs" />
+    <Compile Include="backStage\DealersArea.aspx.cs">
+      <DependentUpon>DealersArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\DealersArea.aspx.designer.cs">
+      <DependentUpon>DealersArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\DealersEdit.aspx.cs">
+      <DependentUpon>DealersEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\DealersEdit.aspx.designer.cs">
+      <DependentUpon>DealersEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\FileHepler.cs" />
+    <Compile Include="backStage\Navigate.aspx.cs">
+      <DependentUpon>Navigate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\Navigate.aspx.designer.cs">
+      <DependentUpon>Navigate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\test.ashx.cs">
+      <DependentUpon>test.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="backStage\UserBoard.aspx.cs">
+      <DependentUpon>UserBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="backStage\UserBoard.aspx.designer.cs">
+      <DependentUpon>UserBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company.aspx.cs">
+      <DependentUpon>company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company.aspx.designer.cs">
+      <DependentUpon>company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="contact.aspx.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="contact.aspx.designer.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YachtDBHelper.cs" />
+    <Compile Include="dealers.aspx.cs">
+      <DependentUpon>dealers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dealers.aspx.designer.cs">
+      <DependentUpon>dealers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="news.aspx.cs">
+      <DependentUpon>news.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="news.aspx.designer.cs">
+      <DependentUpon>news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yacht.Master.cs">
+      <DependentUpon>Yacht.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yacht.Master.designer.cs">
+      <DependentUpon>Yacht.Master</DependentUpon>
+    </Compile>
+    <Compile Include="yachts.aspx.cs">
+      <DependentUpon>yachts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="yachts.aspx.designer.cs">
+      <DependentUpon>yachts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="yachts_2.aspx.cs">
+      <DependentUpon>yachts_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="yachts_2.aspx.designer.cs">
+      <DependentUpon>yachts_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="yachts_3.aspx.cs">
+      <DependentUpon>yachts_3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="yachts_3.aspx.designer.cs">
+      <DependentUpon>yachts_3.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Thumbs.db" />
+    <Content Include="backStage\assets\css\corporate-ui-dashboard.css.map" />
+    <Content Include="backStage\assets\fonts\nucleo-icons.eot" />
+    <Content Include="backStage\assets\fonts\nucleo-icons.ttf" />
+    <Content Include="backStage\assets\fonts\nucleo-icons.woff" />
+    <Content Include="backStage\assets\fonts\nucleo-icons.woff2" />
+    <Content Include="backStage\assets\fonts\nucleo.eot" />
+    <Content Include="backStage\assets\fonts\nucleo.ttf" />
+    <Content Include="backStage\assets\fonts\nucleo.woff" />
+    <Content Include="backStage\assets\fonts\nucleo.woff2" />
+    <Content Include="backStage\assets\js\corporate-ui-dashboard.js.map" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\bootstrap-grid.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\bootstrap-utilities.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\bootstrap.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_floating-labels.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_form-check.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_form-control.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_form-range.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_form-select.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_form-text.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_input-group.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_labels.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\forms\_validation.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_clearfix.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_color-bg.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_colored-links.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_position.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_ratio.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_stacks.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_stretched-link.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_text-truncation.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_visually-hidden.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\helpers\_vr.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_alert.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_backdrop.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_buttons.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_caret.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_color-scheme.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_container.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_forms.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_gradients.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_grid.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_image.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_list-group.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_lists.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_pagination.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_resize.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_table-variants.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_transition.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_utilities.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\mixins\_visually-hidden.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\utilities\_api.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\vendor\_rfs.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_accordion.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_alert.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_badge.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_breadcrumb.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_button-group.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_buttons.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_card.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_carousel.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_close.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_containers.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_dropdown.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_forms.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_functions.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_grid.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_helpers.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_images.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_list-group.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_maps.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_mixins.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_modal.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_nav.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_navbar.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_offcanvas.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_pagination.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_placeholders.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_popover.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_progress.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_reboot.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_root.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_spinners.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_tables.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_toasts.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_tooltip.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_transitions.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_type.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_utilities.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\bootstrap\_variables.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\cards\card-background.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\custom\_styles.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\custom\_variables.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_form-check.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_form-select.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_form-switch.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_forms.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_input-group.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_inputs.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\forms\_labels.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\mixins\mixins.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\mixins\_badge.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\mixins\_colored-shadows.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\mixins\_hover.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\mixins\_social-buttons.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\plugins\free\plugins.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\plugins\free\_flatpickr.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\plugins\free\_nouislider.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\plugins\free\_perfect-scrollbar.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\plugins\free\_prism.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\plugins\free\_swiper.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\theme.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_animations.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_avatars.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_badge.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_breadcrumb.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_cards-extend.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_cards.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_choices.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_dark-version.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_dropdowns.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_fixed-plugin.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_form-switch.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_full-calendar.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_header.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_info-areas.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_misc-extend.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_misc.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_navbar-vertical.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_navbar.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_pagination.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_rtl.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_social-buttons.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_table.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_timeline.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_utilities-extend.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_utilities.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\variables\_virtual-reality.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_alert.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_avatars.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_badge.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_breadcrumbs.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_button-group.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_buttons.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_cards.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_dark-version.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_dropdown.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_dropup.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_fixed-plugin.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_footer.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_forms.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_gradients.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_header.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_info-areas.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_misc.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_nav.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_navbar-vertical.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_navbar.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_pagination.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_popovers.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_progress.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_rtl.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_social-buttons.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_tables.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_tilt.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_timeline.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_tooltips.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_typography.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_utilities-extend.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_utilities.scss" />
+    <Content Include="backStage\assets\scss\corporate-ui-dashboard\_variables.scss" />
+    <Content Include="backStage\CheckAccount.ashx" />
+    <Content Include="backStage\DashBoard.Master" />
+    <Content Include="backStage\test.ashx" />
+    <None Include="packages.config" />
+    <None Include="packages.config" />
+    <None Include="packages.config" />
+    <Content Include="Site.Mobile.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Yacht.Master" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14111</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44339/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

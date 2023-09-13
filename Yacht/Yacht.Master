@@ -1,0 +1,122 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Yacht.master.cs" Inherits="Yacht.Yacht" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TtayanaWorld</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cycle.all.2.74.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.ad-gallery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 先取得 #abgne-block-20110111 , 必要參數及輪播間隔
+            var $block = $('#abgne-block-20110111'),
+                timer, speed = 4000;
+
+            // 幫 #abgne-block-20110111 .title ul li 加上 hover() 事件
+            var $li = $('.title ul li', $block).hover(function () {
+                // 當滑鼠移上時加上 .over 樣式
+                $(this).addClass('over').siblings('.over').removeClass('over');
+            }, function () {
+                // 當滑鼠移出時移除 .over 樣式
+                $(this).removeClass('over');
+            }).click(function () {
+                // 當滑鼠點擊時, 顯示相對應的 div.info
+                // 並加上 .on 樣式
+                var $this = $(this);
+                $this.add($('.bd li.info', $block).eq($this.index())).addClass('on').siblings('.on').removeClass('on');
+            });
+
+            // 幫 $block 加上 hover() 事件
+            $block.hover(function () {
+                // 當滑鼠移上時停止計時器
+                clearTimeout(timer);
+            }, function () {
+                // 當滑鼠移出時啟動計時器
+                timer = setTimeout(move, speed);
+            });
+
+            // 控制輪播
+            function move() {
+                var _index = $('.title ul li.on', $block).index();
+                _index = (_index + 1) % $li.length;
+                $li.eq(_index).click();
+
+                timer = setTimeout(move, speed);
+            }
+
+            // 啟動計時器
+            timer = setTimeout(move, speed);
+
+            // 輪播程式碼已整合，現在加入您之前提供的其他程式碼
+
+            var galleries = $('.ad-gallery').adGallery();
+            galleries[0].settings.effect = 'slide-hori';
+
+            $(document).ready(function () {
+                $('.slideshow').cycle({
+                    fx: 'fade'
+                });
+            });
+        });
+    </script>
+
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/homestyle.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.ad-gallery.css" rel="stylesheet" type="text/css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="contain">
+            <div class="sub">
+                <p><a href="index.aspx">Home</a></p>
+            </div>
+
+            <!--------------------------------選單開始---------------------------------------------------->
+            <div class="menu">
+                <ul>
+                    <li class="menuli01"><a href="yachts.aspx">
+                        <img src="images/mmmmeeeee.gif" alt="&quot;&quot;" />Yachts</a></li>
+                    <li class="menuli02"><a href="news.aspx">
+                        <img src="images/mmmmeeeee.gif" alt="&quot;&quot;" />NEWS</a></li>
+                    <li class="menuli03"><a href="company.aspx">
+                        <img src="images/mmmmeeeee.gif" alt="&quot;&quot;" />COMPANY</a></li>
+                    <li class="menuli04"><a href="dealers.aspx">
+                        <img src="images/mmmmeeeee.gif" alt="&quot;&quot;" />DEALERS</a></li>
+                    <li class="menuli05"><a href="contact.aspx">
+                        <img src="images/mmmmeeeee.gif" alt="&quot;&quot;" />CONTACT</a></li>
+                </ul>
+            </div>
+            <!--------------------------------選單開始結束---------------------------------------------------->
+
+            <!--------------------------------更換內容開始---------------------------------------------------->
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--------------------------------更換內容結束---------------------------------------------------->
+
+            <!--------------------------------落款開始---------------------------------------------------->
+            <div class="footer">
+                <div class="footerp00">
+                    <a href="#">
+                        <img src="images/tog.jpg" alt="&quot;&quot;" /></a>
+                    <p class="footerp001">© 1973-2011 Tayana Yachts, Inc. All Rights Reserved</p>
+                </div>
+                <div class="footer01">
+                    <span>No. 60, Hai Chien Road, Chung Men Li, Lin Yuan District, Kaohsiung City, Taiwan, R.O.C.</span><br />
+                    <span>TEL：+886(7)641-2721</span> <span>FAX：+886(7)642-3193</span><span><a href="mailto:tayangco@ms15.hinet.net">E-mail：tayangco@ms15.hinet.net</a>.</span>
+                </div>
+            </div>
+            <!--------------------------------落款結束---------------------------------------------------->
+        </div>
+    </form>
+</body>
+</html>
