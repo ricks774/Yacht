@@ -21,6 +21,7 @@
     <link href="/Album/css/Style.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -34,10 +35,12 @@
                         <span class="font-weight-bold text-lg">遊艇後台管理</span>
                     </a>
                 </div>
+
+                <!------------------------------------------------ 經銷商開始 ------------------------------------------------>
                 <div class="collapse navbar-collapse px-4  w-auto " id="sidenav-collapse-main">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <asp:HyperLink ID="yachts_link" runat="server" CssClass="nav-link" NavigateUrl="~/Album/FrontStage.aspx">
+                            <asp:HyperLink ID="yachts_link" runat="server" CssClass="nav-link" NavigateUrl="~/backStage/YachtsManager.aspx">
                                 <div class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                                     <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <title>Yachts</title>
@@ -53,8 +56,23 @@
                                 <span class="nav-link-text ms-1">Yachts</span>
                             </asp:HyperLink>
                         </li>
+                        <!------------------------------------------------ 經銷商分支 ------------------------------------------------>
+                        <li class="nav-item border-start my-0 pt-2">
+                            <a class="nav-link position-relative ms-0 ps-2 py-2 " href="../backStage/YachtsOverview.aspx">
+                                <span class="nav-link-text ms-1">Overview</span>
+                            </a>
+                            <a class="nav-link position-relative ms-0 ps-2 py-2 " href="../backStage/YachtsAlbum.aspx">
+                                <span class="nav-link-text ms-1">Album</span>
+                            </a>
+                            <a class="nav-link position-relative ms-0 ps-2 py-2 " href="../backStage/YachtsSpecification.aspx">
+                                <span class="nav-link-text ms-1">Specification & Video</span>
+                            </a>
+                        </li>
+                        <!------------------------------------------------ 經銷商分支 ------------------------------------------------>
+                        <!------------------------------------------------ 經銷商開始 ------------------------------------------------>
+
                         <li class="nav-item">
-                            <asp:HyperLink ID="news_link" runat="server" CssClass="nav-link" NavigateUrl="~/Album/index.aspx">
+                            <asp:HyperLink ID="news_link" runat="server" CssClass="nav-link" NavigateUrl="~/backStage/NewsEdit.aspx">
                                 <div class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                                     <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <title>News</title>
@@ -117,7 +135,7 @@
                         <!------------------------------------------------ 經銷商結束 ------------------------------------------------>
 
                         <li class="nav-item">
-                            <asp:HyperLink ID="act_link" runat="server" CssClass="nav-link" NavigateUrl="~/UserAccount.aspx">
+                            <asp:HyperLink ID="act_link" runat="server" CssClass="nav-link" NavigateUrl="~/backStage/UserBoard.aspx">
                                 <div class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                                     <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <title>account</title>

@@ -111,7 +111,6 @@ namespace Yacht.backStage
                     HttpContext.Current.Response.Write("<script>alert('OK')</script>");
                     // 導頁至權限分流頁面
                     HttpContext.Current.Response.Redirect("~/backStage/CheckAccount.ashx");
-                    //HttpContext.Current.Response.Redirect("~/backStage/test.ashx");
                 }
                 else
                 {

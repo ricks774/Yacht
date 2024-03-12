@@ -71,7 +71,40 @@ namespace Yacht
             }
 
             SqlDataReader reader = sqlcommand.ExecuteReader();
+
+            // 方法中執行完 SQL 查詢後，移除了參數集合中的兩個參數
+            // 避免 變數名稱 '@Act' 已經宣告。變數名稱在一個查詢批次或預存程序內必須是唯一的 錯誤發生
+            foreach (SqlParameter parameter in parameters)
+            {
+                sqlcommand.Parameters.Remove(parameter);
+            }
+
             return reader;
+        }
+
+        // ! 回傳查詢的資料總比數
+        public int SearchDataCountData(string sql, SqlParameter[] parameters)
+        {
+            ConnectDB();
+            sqlcommand.Connection = connection;
+            sqlcommand.CommandText = sql;
+
+            if (parameters != null)
+            {
+                sqlcommand.Parameters.AddRange(parameters);
+            }
+
+            Object result = sqlcommand.ExecuteScalar();
+            int count = Convert.ToInt32(result);
+
+            // 方法中執行完 SQL 查詢後，移除了參數集合中的兩個參數
+            // 避免 變數名稱 '@Act' 已經宣告。變數名稱在一個查詢批次或預存程序內必須是唯一的 錯誤發生
+            foreach (SqlParameter parameter in parameters)
+            {
+                sqlcommand.Parameters.Remove(parameter);
+            }
+
+            return count;
         }
 
         // ! 查詢資料

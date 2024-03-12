@@ -71,7 +71,8 @@
 		// Set the maximum size of uploaded images. If an uploaded image is
 		// larger, it gets scaled down proportionally. Set to 0 to disable this
 		// feature.
-		Images.MaxWidth = 1600;
+		// 直接修改上傳圖片的限制大小
+		Images.MaxWidth = 600;
 		Images.MaxHeight = 1200;
 		Images.Quality = 80;
 

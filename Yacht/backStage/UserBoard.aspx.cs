@@ -166,11 +166,14 @@ namespace Yacht.backStage
             GridViewRow row = GV_all.Rows[e.RowIndex];  // 取的正在更新的索引
             string getAccount = GV_all.DataKeys[e.RowIndex].Value.ToString(); // 取得資料表的帳號
             TextBox tb_title = row.FindControl("Name") as TextBox;  // 取得目前編輯列的控制項
+            CheckBox maxPowerCK = row.FindControl("CB_MaxPower") as CheckBox;
+            bool maxPower = maxPowerCK.Checked;
             string newName = tb_title.Text;
-            string sql = $"update YachtsUser set Name = @Name where Account = @Account";
+            string sql = $"update YachtsUser set Name = @Name, MaxPower = @MaxPower where Account = @Account";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@Name", SqlDbType.NVarChar) { Value =  newName},
+                new SqlParameter("@MaxPower", SqlDbType.Bit) { Value =  maxPower},
                 new SqlParameter("@Account", SqlDbType.NVarChar) { Value = getAccount }
             };
             helper.ExecuteSQL(sql, parameters);

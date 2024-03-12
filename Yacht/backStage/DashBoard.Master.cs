@@ -51,6 +51,7 @@ namespace Yacht.backStage
 
         protected void btn_Logout_Click(object sender, EventArgs e)
         {
+            Response.Redirect("~/backStage/SignOut.ashx");
         }
     }
 }

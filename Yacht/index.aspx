@@ -11,101 +11,14 @@
     <!--------------------------------換圖開始---------------------------------------------------->
     <div id="abgne-block-20110111">
         <div class="bd">
-            <div class="banner">
+            <div class="banner" style="border-radius: 5px; height: 424px; width: 978px">
                 <ul>
-                    <li class="info on"><a href="#">
-                        <img src="images/banner001b.jpg" /></a><!--文字開始--><div class="wordtitle">
-                            TAYANA <span>48</span><br />
-                            <p>SPECIFICATION SHEET</p>
-                        </div>
-                        <!--文字結束-->
-                    </li>
-                    <li class="info"><a href="#">
-                        <img src="images/banner002b.jpg" /></a><!--文字開始--><div class="wordtitle">
-                            TAYANA <span>54</span><br />
-                            <p>SPECIFICATION SHEET</p>
-                        </div>
-                        <!--文字結束-->
-                        <!--新船型開始  54型才出現其於隱藏 -->
-                        <div class="new">
-                            <img src="images/new01.png" alt="new" />
-                        </div>
-                        <!--新船型結束-->
-                    </li>
-                    <li class="info"><a href="#">
-                        <img src="images/banner003b.jpg" /></a><!--文字開始--><div class="wordtitle">
-                            TAYANA <span>37</span><br />
-                            <p>SPECIFICATION SHEET</p>
-                        </div>
-                        <!--文字結束-->
-                    </li>
-                    <li class="info"><a href="#">
-                        <img src="images/banner004b.jpg" /></a><!--文字開始--><div class="wordtitle">
-                            TAYANA <span>64</span><br />
-                            <p>SPECIFICATION SHEET</p>
-                        </div>
-                        <!--文字結束-->
-                    </li>
-                    <li class="info"><a href="#">
-                        <img src="images/banner005b.jpg" /></a><!--文字開始--><div class="wordtitle">
-                            TAYANA <span>58</span><br />
-                            <p>SPECIFICATION SHEET</p>
-                        </div>
-                        <!--文字結束-->
-                    </li>
-                    <li class="info"><a href="#">
-                        <img src="images/banner006b.jpg" /></a><!--文字開始--><div class="wordtitle">
-                            TAYANA <span>55</span><br />
-                            <p>SPECIFICATION SHEET</p>
-                        </div>
-                        <!--文字結束-->
-                    </li>
+                    <asp:Literal ID="Lt_Banner" runat="server"></asp:Literal>
                 </ul>
                 <!--小圖開始-->
-                <div class="bannerimg title">
+                <div class="bannerimg title" style="display: none">
                     <ul>
-                        <li class="on">
-                            <div>
-                                <p class="bannerimg_p">
-                                    <img src="images/i001.jpg" alt="&quot;&quot;" />
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <p class="bannerimg_p">
-                                    <img src="images/i002.jpg" alt="&quot;&quot;" />
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <p class="bannerimg_p">
-                                    <img src="images/i003.jpg" alt="&quot;&quot;" />
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <p class="bannerimg_p">
-                                    <img src="images/i004.jpg" alt="&quot;&quot;" />
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <p class="bannerimg_p">
-                                    <img src="images/i005.jpg" alt="&quot;&quot;" />
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <p class="bannerimg_p">
-                                    <img src="images/i006.jpg" alt="&quot;&quot;" />
-                                </p>
-                            </div>
-                        </li>
+                        <asp:Literal ID="Lt_BannerNum" runat="server"></asp:Literal>
                     </ul>
                 </div>
                 <!--小圖結束-->
@@ -121,58 +34,88 @@
             <p class="newstitlep1">
                 <img src="images/news.gif" alt="news" />
             </p>
-            <p class="newstitlep2"><a href="#">More>></a></p>
+            <p class="newstitlep2"><a href="newsView.aspx">More>></a></p>
         </div>
 
         <ul>
             <!--TOP第一則最新消息-->
             <li>
-                <div class="newstop">
-                    <img src="images/new_top01.png" alt="&quot;&quot;" />
-                </div>
                 <div class="news01">
+                    <!--TOP標籤-->
+                    <div class="newstop">
+                        <asp:Image ID="ImgIsTop1" runat="server" AlternateText="&qout;&quot;" Visible="false" ImageUrl="images/new_top01.png" />
+                    </div>
+                    <!--TOP標籤結束-->
                     <div class="news02p1">
                         <p class="news02p1img">
-                            <img src="images/pit002.jpg" alt="&quot;&quot;" />
+                            <asp:Literal ID="Lt_NewsImg1" runat="server"></asp:Literal>
                         </p>
                     </div>
                     <p class="news02p2">
-                        <span>Tayana 54 CE Certifica..</span>
-                        <a href="#">For Tayana 54 entering the EU, CE Certificates are AVAILABLE to ensure conformity to all applicable European ...</a>
+                        <span>
+                            <asp:Label ID="Lb_NewsDate1" runat="server" ForeColor="#02A5B8"></asp:Label>
+                        </span>
+                        <span>
+                            <asp:HyperLink ID="HL_News1" runat="server"></asp:HyperLink>
+                        </span>
                     </p>
                 </div>
             </li>
             <!--TOP第一則最新消息結束-->
 
-            <!--第二則-->
+            <!--TOP第二則最新消息-->
             <li>
-                <div class="news02">
+                <div class="news01">
+                    <!--TOP標籤-->
+                    <div class="newstop">
+                        <asp:Image ID="ImgIsTop2" runat="server" AlternateText="&qout;&quot;" Visible="false" ImageUrl="images/new_top01.png" />
+                    </div>
+                    <!--TOP標籤結束-->
                     <div class="news02p1">
                         <p class="news02p1img">
-                            <img src="images/pit001.jpg" alt="&quot;&quot;" />
+                            <asp:Literal ID="Lt_NewsImg2" runat="server"></asp:Literal>
                         </p>
                     </div>
                     <p class="news02p2">
-                        <span>Tayana 58 CE Certifica..</span>
-                        <a href="#">For Tayana 58 entering the EU, CE Certificates are AVAILABLE to ensure conformity to all applicable European ...</a>
+                        <span>
+                            <asp:Label ID="Lb_NewsDate2" runat="server" ForeColor="#02A5B8"></asp:Label>
+                        </span>
+                        <span>
+                            <asp:HyperLink ID="HL_News2" runat="server"></asp:HyperLink>
+                        </span>
                     </p>
                 </div>
             </li>
-            <!--第二則結束-->
+            <!--TOP第二則最新消息結束-->
 
+            <!--TOP第三則最新消息-->
             <li>
-                <div class="news02">
+                <div class="news01">
+                    <!--TOP標籤-->
+                    <div class="newstop">
+                        <asp:Image ID="ImgIsTop3" runat="server" AlternateText="&qout;&quot;" Visible="false" ImageUrl="images/new_top01.png" />
+                    </div>
+                    <!--TOP標籤結束-->
                     <div class="news02p1">
                         <p class="news02p1img">
-                            <img src="images/pit001.jpg" alt="&quot;&quot;" />
+                            <asp:Literal ID="Lt_NewsImg3" runat="server"></asp:Literal>
                         </p>
                     </div>
                     <p class="news02p2">
-                        <span>Big Cruiser in a Small ..</span>
-                        <a href="#">Tayana 37 is our classical product and full of skilful craftsmanship. We only plan to build TWO units in a year.</a>
+                        <span>
+                            <asp:Label ID="Lb_NewsDate3" runat="server" ForeColor="#02A5B8"></asp:Label>
+                        </span>
+                        <span>
+                            <asp:HyperLink ID="HL_News3" runat="server"></asp:HyperLink>
+                        </span>
                     </p>
                 </div>
             </li>
+            <!--TOP第三則最新消息結束-->
+
+
+
+
         </ul>
     </div>
     <!--------------------------------最新消息結束---------------------------------------------------->

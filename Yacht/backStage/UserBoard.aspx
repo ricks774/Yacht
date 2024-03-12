@@ -15,7 +15,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title">新增使用者</h4>
-                        <asp:Button ID="newAccount_btn" runat="server" CssClass="close" Text="&times;" OnClientClick="return closeModal();" Visible="false"/>
+                        <asp:Button ID="newAccount_btn" runat="server" CssClass="close" Text="&times;" OnClientClick="return closeModal();" Visible="false" />
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
@@ -59,6 +59,14 @@
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="最高權限" SortExpression="MaxPower">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CB_MaxPower" runat="server" Checked='<%# Bind("MaxPower") %>' />
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CB_MaxPower" runat="server" Checked='<%# Bind("MaxPower") %>' Enabled="false" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="LastLoginDate" ReadOnly="True" HeaderText="最後登入時間" SortExpression="LastLoginDate" />

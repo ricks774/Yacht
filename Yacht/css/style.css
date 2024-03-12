@@ -201,8 +201,8 @@ body {
 
 .newstop {
     position: absolute;
-    top: 32px;
-    left: 22px;
+    top: 0px;
+    left: 0px;
 }
 
 .news01 {
@@ -211,6 +211,7 @@ body {
     padding: 12px;
     border: 1px solid #d7d7d7;
     font-size: 90%;
+    position: relative;
 }
 
 .news02 {

@@ -19,12 +19,13 @@ namespace Yacht
             if (!IsPostBack)
             {
                 LoadModelList();
+                LoadCountry();
             }
         }
 
         private void LoadModelList()
         {
-            string sql = "select * from Yachts";
+            string sql = "select CONCAT(YachtModelName, ' ', YachtModelNo) AS YachtModel, IsNewDesign, IsNewBuilding from YachtsManager";
             var reader = helper.SearchData(sql);
             while (reader.Read())
             {
@@ -53,7 +54,28 @@ namespace Yacht
                     Yachts.Items.Add(listItem);
                 }
             }
+            helper.CloseConnection();
         }
+
+        #region
+
+        private void LoadCountry()
+        {
+            string sql = "select * from DealersCountry";
+            var reader = helper.SearchData(sql);
+            while (reader.Read())
+            {
+                string countryName = reader["CountrySort"].ToString();
+                // 加入遊艇型號下拉選單選項
+                ListItem listItem = new ListItem();
+                listItem.Text = countryName;
+                listItem.Value = countryName;
+                Country.Items.Add(listItem);
+            }
+            helper.CloseConnection();
+        }
+
+        #endregion
 
         protected void Btn_submit_Click(object sender, ImageClickEventArgs e)
         {

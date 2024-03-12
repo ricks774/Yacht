@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Yacht.Master" AutoEventWireup="true" CodeBehind="yachts_2.aspx.cs" Inherits="Yacht.yachts_2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Yacht.Master" AutoEventWireup="true" CodeBehind="Yachts_2.aspx.cs" Inherits="Yacht.yachts_2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,8 +8,7 @@
         <img src="images/banner01_masks.png" alt="&quot;&quot;" />
     </div>
     <!--遮罩結束-->
-
-    <!--------------------------------小圖開始---------------------------------------------------->
+    <!--小圖開始-->
     <div class="banner">
         <div id="gallery" class="ad-gallery">
             <div class="ad-image-wrapper">
@@ -19,21 +18,13 @@
             <div class="ad-nav">
                 <div class="ad-thumbs">
                     <ul class="ad-thumb-list">
-                        <li>
-                            <a href="images/test1.jpg">
-                                <img src="images/pit003.jpg">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="images/test002.jpg">
-                                <img src="images/pit003.jpg">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="images/test002.jpg">
-                                <img src="images/pit003.jpg">
-                            </a>
-                        </li>
+                        <asp:Repeater ID="Rp_Img" runat="server">
+                            <ItemTemplate>
+                                <a href='<%# Eval("ImgPath") %>'>
+                                    <img src='<%# Eval("ImgPath") %>' class="image0" height="59px" />
+                                </a>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </div>
             </div>
@@ -47,50 +38,43 @@
             <div class="left1">
                 <p><span>YACHTS</span></p>
                 <ul>
-                    <li><a href="#">Dynasty 72</a></li>
-                    <li><a href="#">Tayana 64</a></li>
-                    <li><a href="#">Tayana 58</a></li>
-                    <li><a href="#">Tayana 55</a></li>
+                    <asp:Literal ID="Lr_LeftMenuHtml" runat="server"></asp:Literal>
                 </ul>
             </div>
         </div>
-
         <!--------------------------------左邊選單結束---------------------------------------------------->
 
         <!--------------------------------右邊選單開始---------------------------------------------------->
-        <div id="crumb"><a href="#">Home</a> >> <a href="#">Yachts</a> >> <a href="#"><span class="on1">Dynasty 72</span></a></div>
+        <div id="crumb"><a href="#">Home</a> >> <a href="#">Yachts</a> >> <a href="#"><span id="Lb_RighTopLink" class="on1" runat="server">Dynasty 72</span></a></div>
         <div class="right">
             <div class="right1">
-                <div class="title"><span>Dynasty 72</span></div>
-
-                <!--------------------------------內容開始---------------------------------------------------->
-
-                <!--次選單-->
-                <div class="menu_y">
-                    <ul>
-                        <li class="menu_y00">YACHTS</li>
-                        <li><a class="menu_yli01" href="../yachts.aspx">Interior</a></li>
-                        <li><a class="menu_yli02" href="../yachts_2.aspx">Layout & deck pla</a>n</li>
-                        <li><a class="menu_yli03" href="../yachts_3.aspx">Specification</a></li>
-                    </ul>
+                <div class="title">
+                    <span id="Lb_YachtsTitle" runat="server">Unite States</span>
                 </div>
-                <!--次選單-->
-
-                <div class="box6">
-                    <p>Layout & deck plan</p>
-                    <ul>
-                        <li>
-                            <img src="images/deckplan01.jpg" alt="&quot;&quot;" /></li>
-                        <li>
-                            <img src="images/deckplan01.jpg" alt="&quot;&quot;" /></li>
-                    </ul>
-                </div>
-
-                <div class="clear"></div>
-                <!--------------------------------內容結束------------------------------------------------------>
             </div>
-        </div>
+            <!--------------------------------內容開始---------------------------------------------------->
+            <!--次選單-->
+            <div class="menu_y">
+                <ul>
+                    <li class="menu_y00">YACHTS</li>
+                    <asp:Literal ID="Lr_Interior" runat="server"></asp:Literal>
+                    <asp:Literal ID="Lr_Layout" runat="server"></asp:Literal>
+                    <asp:Literal ID="Lr_Specification" runat="server"></asp:Literal>
+                    <asp:Literal ID="Lr_Video" runat="server"></asp:Literal>
+                </ul>
+            </div>
+            <!--次選單-->
 
-        <!--------------------------------右邊選單結束---------------------------------------------------->
+            <!-- 內容開始 -->
+            <div class="box1 mb-3">
+                <asp:Literal ID="Lr_OverViewLayout" runat="server"></asp:Literal>                
+            </div>
+            <!-- 內容結束 -->
+            <p class="topbuttom">
+                <%--<img src="images/top.gif" alt="top" />--%>
+            </p>
+            <!--------------------------------內容結束------------------------------------------------------>
+        </div>
     </div>
+    <!--------------------------------右邊選單結束---------------------------------------------------->
 </asp:Content>

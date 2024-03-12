@@ -57,13 +57,14 @@
                                             <asp:TextBox ID="tbx_addEmail" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                         <div class="m-2">
+                                            <a href="UserBoard.aspx">UserBoard.aspx</a>
                                             <asp:Label ID="Label18" runat="server" Text="Link : "></asp:Label>
                                             <asp:TextBox ID="tbx_addLink" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                         <div class="m-2">
                                             <asp:Label ID="Label19" runat="server" Text="Thumbnail : "></asp:Label>
                                             <br />
-                                            <asp:FileUpload ID="upload_thumbnail" runat="server" />
+                                            <asp:FileUpload ID="upload_thumbnail" runat="server" class="btn btn-outline-primary btn-block"/>
                                         </div>
                                     </div>
                                     <!-- Modal footer -->
@@ -88,7 +89,7 @@
                 <div class="mb-2">
                     <asp:Label ID="Label1" runat="server" Text="經銷商資料" CssClass="h6"></asp:Label>
                 </div>
-                <div class="">
+                <div>
                     <asp:Repeater ID="rp_dealerDetail" runat="server" OnItemCommand="Rp_dealerDetail_ItemCommand" OnItemDataBound="Rp_dealerDetail_ItemDataBound">
                         <ItemTemplate>
                             <asp:Button ID="btnEdit" runat="server" Text="編輯" CommandName="Edit" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary mb-2" />
@@ -220,7 +221,7 @@
                                             <img src='<%# Eval("DealerImgPath") %>' alt="Thumbnail" width="200" height="150">
                                         </th>
                                         <td>
-                                            <asp:FileUpload ID="update_thumbnail" runat="server" />
+                                            <asp:FileUpload ID="update_thumbnail" runat="server" class="btn btn-outline-primary btn-block"/>
                                         </td>
                                     </tr>
                                     <tr>

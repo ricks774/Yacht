@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Yacht.Master" AutoEventWireup="true" CodeBehind="news.aspx.cs" Inherits="Yacht.news" %>
 
+<%@ Register Src="~/Pagination.ascx" TagPrefix="uc1" TagName="Pagination" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -25,7 +28,7 @@
             <div class="left1">
                 <p><span>NEWS</span></p>
                 <ul>
-                    <li><a href="#">News & Events</a></li>
+                    <li><a href="news.aspx">News & Events</a></li>
                 </ul>
             </div>
         </div>
@@ -33,7 +36,7 @@
         <!--------------------------------左邊選單結束---------------------------------------------------->
 
         <!--------------------------------右邊選單開始---------------------------------------------------->
-        <div id="crumb"><a href="#">Home</a> >> <a href="#">News </a>>> <a href="#"><span class="on1">News & Events</span></a></div>
+        <div id="crumb"><a href="index.aspx">Home</a> >> <a href="news.aspx">News </a>>> <a href="news.aspx"><span class="on1">News & Events</span></a></div>
         <div class="right">
             <div class="right1">
                 <div class="title"><span>News & Events</span></div>
@@ -41,90 +44,11 @@
                 <!--------------------------------內容開始---------------------------------------------------->
                 <div class="box2_list">
                     <ul>
-                        <li>
-                            <div class="list01">
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <p>
-                                                <img src="images/pit006.jpg" alt="&quot;&quot;" />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li><span>2012-01-28</span><br />
-                                        Tayana 58 CE Certificates are availableTayana 58 CE Certificates are availableTayana 58 CE Certificates are availableTayana 58 CE Certificates are availableTayana 58 CE Certificates are available</li>
-                                    <li>availableTayana 58 CE Certificates are availableTayana 58 CE Certificates are availableTayana 58 CE Certificates are available</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="list01">
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <p>
-                                                <img src="images/pit007.jpg" alt="&quot;&quot;" />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li><span>2012-01-28</span><br />
-                                        Tayana 58 CE Certificates are available</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="list01">
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <p>
-                                                <img src="images/pit008.jpg" alt="&quot;&quot;" />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li><span>2012-01-28</span><br />
-                                        Tayana 58 CE Certificates are available</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="list01">
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <p>
-                                                <img src="images/pit006.jpg" alt="&quot;&quot;" width="300" />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li><span>2012-01-28</span><br />
-                                        Tayana 58 CE Certificates are available</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="list01">
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <p>
-                                                <img src="images/pit006.jpg" alt="&quot;&quot;" width="300" />
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li><span>2012-01-28</span><br />
-                                        Tayana 58 CE Certificates are available</li>
-                                </ul>
-                            </div>
-                        </li>
+                        <asp:Literal ID="newsList" runat="server"></asp:Literal>
                     </ul>
-
-                    <div class="pagenumber">| <span>1</span> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> | <a href="#">5</a> |  <a href="#">Next</a>  <a href="#">LastPage</a></div>
-                    <div class="pagenumber1">Items：<span>89</span>  |  Pages：<span>1/9</span></div>
+                    <div class="pageumber">
+                        <uc1:Pagination runat="server" ID="Pagination" />
+                    </div>
                 </div>
                 <!--------------------------------內容結束------------------------------------------------------>
             </div>

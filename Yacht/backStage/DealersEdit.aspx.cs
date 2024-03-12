@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Collections;
-using static System.Net.Mime.MediaTypeNames;
-using System.Web.Helpers;
-using System.Xml.Linq;
+using System.Data.SqlClient;
 using System.IO;
+using System.Web.UI.WebControls;
 
 namespace Yacht.backStage
 {
@@ -187,6 +179,8 @@ namespace Yacht.backStage
                 System.Data.Common.DbDataRecord record = (System.Data.Common.DbDataRecord)e.Item.DataItem;
                 //DataTable類型的數據源驗證方式
                 //System.Data.DataRowView record = (DataRowView)e.Item.DataItem;
+                Response.Write($"<script>alert('{int.Parse(record["id"].ToString())}')</script>");
+                Response.Write($"<script>alert('{id}')</script>");
 
                 //判斷數據源的id是否等於現在的id，如果相等的話證明現點擊了編輯觸發了userRepeat_ItemCommand事件
                 if (id == int.Parse(record["id"].ToString()))
@@ -442,7 +436,18 @@ namespace Yacht.backStage
             if (upload_thumbnail.HasFile)
             {
                 //儲存圖片檔案及圖片名稱
-                string result = fileHepler.FileUpload(upload_thumbnail, newDealerId, newDealerName, savePath);
+                string fileName = upload_thumbnail.FileName;
+                string extension = Path.GetExtension(fileName).ToLowerInvariant();  // 取得副檔名
+                // === 自訂定義檔案名稱 ===
+                fileName = $"{newDealerId}_{newDealerName}{extension}";
+                string path = $"/images/Dealers/{fileName}";
+                string sql = $"update DealersInfo set DealerImgPath = @UpdateImgDealerPath where Id = @UpdateImgDealerId";
+                SqlParameter[] parameters =
+                {
+                new SqlParameter("@UpdateImgDealerPath", SqlDbType.NVarChar) { Value = path },
+                new SqlParameter("@UpdateImgDealerId", SqlDbType.Int) { Value = newDealerId }
+                };
+                string result = fileHepler.FileUpload(upload_thumbnail, sql, parameters, newDealerId, newDealerName, savePath);
                 if (result == "OK") { Response.Write($"<script>alert('成功新增')</script>"); }
                 else { Response.Write($"<script>alert('新增失敗')</script>"); }
             }
@@ -454,7 +459,18 @@ namespace Yacht.backStage
             string savePath = Server.MapPath("/images/Dealers/");
 
             //儲存圖片檔案及圖片名稱
-            string result = fileHepler.FileUpload(updateFileUpload, newDealerId, newDealerName, savePath);
+            string fileName = updateFileUpload.FileName;
+            string extension = Path.GetExtension(fileName).ToLowerInvariant();  // 取得副檔名
+            // === 自訂定義檔案名稱 ===
+            fileName = $"{newDealerId}_{newDealerName}{extension}";
+            string path = $"/images/Dealers/{fileName}";
+            string sql = $"update DealersInfo set DealerImgPath = @UpdateImgDealerPath where Id = @UpdateImgDealerId";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@UpdateImgDealerPath", SqlDbType.NVarChar) { Value = path },
+                new SqlParameter("@UpdateImgDealerId", SqlDbType.Int) { Value = newDealerId }
+            };
+            string result = fileHepler.FileUpload(updateFileUpload, sql, parameters, newDealerId, newDealerName, savePath);
         }
 
         // ! <----------------------------------- 檔案處理事件結束 ----------------------------------->
